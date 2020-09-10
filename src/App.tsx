@@ -1,7 +1,15 @@
-import React from 'react';
+import React from 'react'
 
-function App() {
-  return <h1>Vehicle Prices</h1>;
+import GlobalStyle from './styles/global'
+import Home from './pages/Home'
+
+const App: React.FC = () => {
+  return (
+    <>
+      <Home />
+      <GlobalStyle />
+    </>
+  )
 }
 
-export default App;
+export default App
