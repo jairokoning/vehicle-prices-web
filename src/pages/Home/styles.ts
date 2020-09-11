@@ -54,7 +54,14 @@ export const MySelect = styled(Select)`
   div {
     border-radius: 0;
   }
-  &.Select.is-open > .Select-control .Select-arrow {
-    border-color: transparent transparent red;
+
+  /* &.react-select .Select__control Select__control--is-focused {
+    border-color: red !important;
+  } */
+
+  &.react-select .Select__control--is-focused {
+    border-color: #868686 !important;
+    box-sizing: none;
+    box-shadow: 0 0 0 0px #868686;
   }
 `

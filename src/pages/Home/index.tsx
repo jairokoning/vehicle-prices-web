@@ -1,5 +1,4 @@
 import React from 'react'
-// import Select from 'react-select'
 
 import ImgCar from '../../assets/img-car.jpg'
 
@@ -9,7 +8,7 @@ const Home: React.FC = () => {
   const brands = [
     { value: 'chocolate', label: 'Chocolate' },
     { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' }
+    { value: 'vanilla', label: 'Vanilla' },
   ]
 
   return (
@@ -27,7 +26,11 @@ const Home: React.FC = () => {
       <Content>
         <form action="">
           <h3>LET&apos;S FIND YOUR VEHICLE PRICE</h3>
-          <MySelect classNamePrefix={'Select'} options={brands} />
+          <MySelect
+            classNamePrefix={'Select'}
+            className="react-select"
+            options={brands}
+          />
         </form>
       </Content>
     </Container>
