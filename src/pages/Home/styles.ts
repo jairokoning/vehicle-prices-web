@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Select from 'react-select'
 
 export const Container = styled.div`
   header {
@@ -30,16 +31,30 @@ export const Content = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: -150px auto;
+  margin: -120px auto;
 
   width: 100%;
-  background: #fff;
 
   form {
+    background: #fff;
     margin: 80px 0;
-    width: 340px;
+    padding: 30px 30px 0 30px;
+    width: 540px;
     text-align: center;
     display: flex;
     flex-direction: column;
+
+    div {
+      /* border-radius: 0; */
+    }
+  }
+`
+
+export const MySelect = styled(Select)`
+  div {
+    border-radius: 0;
+  }
+  &.Select.is-open > .Select-control .Select-arrow {
+    border-color: transparent transparent red;
   }
 `

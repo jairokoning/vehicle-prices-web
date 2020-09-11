@@ -1,10 +1,17 @@
 import React from 'react'
+// import Select from 'react-select'
 
 import ImgCar from '../../assets/img-car.jpg'
 
-import { Container, Content } from './styles'
+import { Container, Content, MySelect } from './styles'
 
 const Home: React.FC = () => {
+  const brands = [
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' }
+  ]
+
   return (
     <Container>
       <header>
@@ -19,7 +26,8 @@ const Home: React.FC = () => {
 
       <Content>
         <form action="">
-          <input type="text" />
+          <h3>LET&apos;S FIND YOUR VEHICLE PRICE</h3>
+          <MySelect classNamePrefix={'Select'} options={brands} />
         </form>
       </Content>
     </Container>
