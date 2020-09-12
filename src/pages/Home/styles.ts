@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { shade } from 'polished'
 import Select from 'react-select'
 
 export const Container = styled.div`
@@ -32,25 +33,72 @@ export const Content = styled.div`
   align-items: center;
   justify-content: center;
   margin: -120px auto;
-
   width: 100%;
 
   form {
     background: #fff;
     margin: 80px 0;
-    padding: 30px 30px 0 30px;
+
     width: 540px;
     text-align: center;
     display: flex;
     flex-direction: column;
 
-    div {
-      /* border-radius: 0; */
+    > div {
+      padding: 30px 30px 0 30px;
+    }
+
+    > button {
+      height: 30px;
+      width: 100%;
+      background: #d92b38;
+      color: #808080;
+      border: none;
+      font-weight: 700;
+      transition: background-color 0.2s;
+    }
+
+    > button:hover {
+      background: ${shade(0.2, '#d92b38')};
     }
   }
 `
 
+export const CarType = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin: 30px 0;
+
+  button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    height: 80px;
+    width: 140px;
+    border: none;
+    border-radius: 8px;
+    background: #db2e2e;
+    transition: background-color 0.2s;
+  }
+
+  button:hover {
+    background: ${shade(0.2, '#db2e2e')};
+  }
+
+  button:focus {
+    background: #000000;
+    color: #808080;
+    font-weight: 700;
+  }
+`
+
 export const MySelect = styled(Select)`
+  margin-bottom: 30px;
+
   div {
     border-radius: 0;
   }
