@@ -3,7 +3,16 @@ import { FaCarSide, FaMotorcycle, FaTruck } from 'react-icons/fa'
 
 import ImgCar from '../../assets/img-car.jpg'
 
-import { Container, Content, CarType, MySelect } from './styles'
+import {
+  Container,
+  Content,
+  CarType,
+  MySelect,
+  VehicleInfoContent,
+  PriceContent,
+  ReferenceContent,
+  Footer,
+} from './styles'
 
 const Home: React.FC = () => {
   const brands = [
@@ -69,6 +78,22 @@ const Home: React.FC = () => {
           </div>
           <button type="button">Search</button>
         </form>
+        <VehicleInfoContent>
+          <PriceContent>
+            <p>Price</p>
+            <hr />
+            <h2>R$ 148.000,00</h2>
+          </PriceContent>
+          <ReferenceContent>
+            <p>Reference</p>
+            <hr />
+            <h2>setembro 2020</h2>
+          </ReferenceContent>
+        </VehicleInfoContent>
+        <Footer>
+          <a href="">Linkedin</a>
+          <a href="">Github</a>
+        </Footer>
       </Content>
     </Container>
   )

@@ -52,9 +52,9 @@ export const Content = styled.div`
       height: 30px;
       width: 100%;
       background: #d92b38;
-      color: #808080;
+      color: #c4c4c4;
       border: none;
-      font-weight: 700;
+      font-weight: 500;
       transition: background-color 0.2s;
     }
 
@@ -112,4 +112,38 @@ export const MySelect = styled(Select)`
     box-sizing: none;
     box-shadow: 0 0 0 0px #868686;
   }
+`
+
+export const VehicleInfoContent = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  width: 100%;
+  padding: 30px 0 80px 0;
+
+  background: linear-gradient(
+    180deg,
+    rgba(245, 245, 245, 1) 0%,
+    rgba(208, 208, 208, 1) 80%,
+    rgba(187, 187, 187, 1) 100%
+  );
+`
+export const PriceContent = styled.div`
+  border-left: 2px solid #5c5c5b;
+  padding-left: 5px;
+`
+
+export const ReferenceContent = styled.div`
+  border-left: 2px solid #5c5c5b;
+  padding-left: 5px;
+`
+
+export const Footer = styled.footer`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 30px;
 `
