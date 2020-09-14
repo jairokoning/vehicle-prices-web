@@ -145,5 +145,21 @@ export const Footer = styled.footer`
   align-items: center;
   justify-content: center;
 
+  width: 100%;
   padding: 30px;
+  background: #000;
+
+  a {
+    text-decoration: none;
+    color: #303030;
+    font-weight: 700;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      margin-right: 5px;
+    }
+  }
 `

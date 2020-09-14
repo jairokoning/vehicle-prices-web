@@ -1,5 +1,11 @@
 import React from 'react'
-import { FaCarSide, FaMotorcycle, FaTruck } from 'react-icons/fa'
+import {
+  FaCarSide,
+  FaMotorcycle,
+  FaTruck,
+  FaLinkedin,
+  FaGithub,
+} from 'react-icons/fa'
 
 import ImgCar from '../../assets/img-car.jpg'
 
@@ -91,8 +97,14 @@ const Home: React.FC = () => {
           </ReferenceContent>
         </VehicleInfoContent>
         <Footer>
-          <a href="">Linkedin</a>
-          <a href="">Github</a>
+          <a href="https://www.linkedin.com/in/jairokoning/">
+            <FaLinkedin />
+            Linkedin
+          </a>
+
+          <a href="https://github.com/jairokoning">
+            <FaGithub /> Github
+          </a>
         </Footer>
       </Content>
     </Container>
