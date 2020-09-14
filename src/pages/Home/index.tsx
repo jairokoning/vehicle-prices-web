@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback, useState } from 'react'
 import {
   FaCarSide,
   FaMotorcycle,
@@ -8,6 +8,7 @@ import {
 } from 'react-icons/fa'
 
 import ImgCar from '../../assets/img-car.jpg'
+import api from '../../servives/api'
 
 import {
   Container,
@@ -20,12 +21,26 @@ import {
   Footer,
 } from './styles'
 
+interface Brand {
+  codigo: number
+  nome: string
+}
+
 const Home: React.FC = () => {
-  const brands = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' },
-  ]
+  const [brands, setBrands] = useState([])
+
+  const handleVehicleType = useCallback(async type => {
+    const response = await api.get(`${type}/marcas`)
+
+    setBrands(
+      response.data.map((brand: Brand) => {
+        return {
+          value: brand.codigo,
+          label: brand.nome,
+        }
+      })
+    )
+  }, [])
 
   return (
     <Container>
@@ -44,19 +59,22 @@ const Home: React.FC = () => {
           <div>
             <h3>LET&apos;S FIND YOUR VEHICLE PRICE</h3>
             <CarType>
-              <button type="button">
+              <button type="button" onClick={() => handleVehicleType('carros')}>
                 <span>
                   <FaCarSide size={32} />
                 </span>
                 Cars
               </button>
-              <button type="button">
+              <button type="button" onClick={() => handleVehicleType('motos')}>
                 <span>
                   <FaMotorcycle size={32} />
                 </span>{' '}
                 Motorcycles
               </button>
-              <button type="button">
+              <button
+                type="button"
+                onClick={() => handleVehicleType('caminhoes')}
+              >
                 <span>
                   <FaTruck size={32} />
                 </span>
