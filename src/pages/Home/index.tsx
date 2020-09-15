@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { FormEvent, useCallback, useState } from 'react'
 import {
   FaCarSide,
   FaMotorcycle,
@@ -26,8 +26,37 @@ interface Brand {
   nome: string
 }
 
+interface Model {
+  codigo: number
+  nome: string
+}
+
+interface Year {
+  codigo: number
+  nome: string
+}
+
+interface VehicleInfo {
+  Valor: string
+  Marca: string
+  Modelo: string
+  AnoModelo: number
+  Combustivel: string
+  CodigoFipe: string
+  MesReferencia: string
+  TipoVeiculo: number
+  SiglaCombustivel: string
+}
+
 const Home: React.FC = () => {
+  const [selectedType, setSelectedType] = useState('')
   const [brands, setBrands] = useState([])
+  const [selectedBrand, setSelectedBrand] = useState(null)
+  const [models, setModels] = useState([])
+  const [selectedModel, setSelectedModel] = useState(null)
+  const [years, setYears] = useState([])
+  const [selectedYear, setSelectedyear] = useState(null)
+  const [vehicleInfo, setVehicleInfo] = useState<VehicleInfo[]>([])
 
   const handleVehicleType = useCallback(async type => {
     const response = await api.get(`${type}/marcas`)
@@ -40,7 +69,64 @@ const Home: React.FC = () => {
         }
       })
     )
+
+    setSelectedType(type)
   }, [])
+
+  const handleVehicleBrand = useCallback(
+    async event => {
+      const brand = event.value
+
+      const response = await api.get(`${selectedType}/marcas/${brand}/modelos`)
+
+      setModels(
+        response.data.modelos.map((model: Model) => {
+          return {
+            value: model.codigo,
+            label: model.nome,
+          }
+        })
+      )
+
+      setSelectedBrand(brand)
+    },
+    [selectedType]
+  )
+
+  const handleVehicleModel = useCallback(
+    async event => {
+      const model = event.value
+
+      const response = await api.get(
+        `${selectedType}/marcas/${selectedBrand}/modelos/${model}/anos`
+      )
+
+      setYears(
+        response.data.map((year: Year) => {
+          return {
+            value: year.codigo,
+            label: year.nome,
+          }
+        })
+      )
+
+      setSelectedModel(model)
+    },
+    [selectedType, selectedBrand],
+  )
+
+  const handleSearchPrice = useCallback(
+    async (event: FormEvent) => {
+      event.preventDefault()
+
+      const response = await api.get(
+        `${selectedType}/marcas/${selectedBrand}/modelos/${selectedModel}/anos/${selectedYear}`,
+      )
+
+      setVehicleInfo(response.data)
+    },
+    [selectedType, selectedBrand, selectedModel, selectedYear]
+  )
 
   return (
     <Container>
@@ -55,7 +141,7 @@ const Home: React.FC = () => {
       </header>
 
       <Content>
-        <form action="">
+        <form onSubmit={handleSearchPrice}>
           <div>
             <h3>LET&apos;S FIND YOUR VEHICLE PRICE</h3>
             <CarType>
@@ -85,28 +171,33 @@ const Home: React.FC = () => {
               classNamePrefix={'Select'}
               className="react-select"
               placeholder="Brands..."
+              value={brands.find((obj: any) => obj.value === selectedBrand)}
               options={brands}
+              onChange={(event: any) => handleVehicleBrand(event)}
             />
             <MySelect
               classNamePrefix={'Select'}
               className="react-select"
               placeholder="Vehicles..."
-              options={brands}
+              value={models.find((obj: any) => obj.value === selectedModel)}
+              options={models}
+              onChange={(event: any) => handleVehicleModel(event)}
             />
             <MySelect
               classNamePrefix={'Select'}
               className="react-select"
               placeholder="Years..."
-              options={brands}
+              options={years}
+              onChange={(event: any) => setSelectedyear(event.target.value)}
             />
           </div>
-          <button type="button">Search</button>
+          <button type="submit">Search</button>
         </form>
         <VehicleInfoContent>
           <PriceContent>
             <p>Price</p>
             <hr />
-            <h2>R$ 148.000,00</h2>
+            <h2>{vehicleInfo ? vehicleInfo.Valor : '---'}</h2>
           </PriceContent>
           <ReferenceContent>
             <p>Reference</p>
