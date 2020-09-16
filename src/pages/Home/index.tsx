@@ -14,6 +14,7 @@ import {
   Container,
   Content,
   CarType,
+  ButtonCarType,
   MySelect,
   VehicleInfoContent,
   PriceContent,
@@ -58,30 +59,42 @@ const Home: React.FC = () => {
   const [selectedYear, setSelectedYear] = useState('')
   const [vehicleInfo, setVehicleInfo] = useState({} as VehicleInfo)
 
-  const handleVehicleType = useCallback(async type => {
-    const response = await api.get(`${type}/marcas`)
+  const handleVehicleType = useCallback(
+    async type => {
+      if (type === selectedType) {
+        return
+      }
 
-    setBrands(
-      response.data.map((brand: Brand) => {
-        return {
-          value: brand.codigo,
-          label: brand.nome,
-        }
-      })
-    )
+      setSelectedType(type)
 
-    setSelectedType(type)
-    setSelectedBrand('')
-    setSelectedModel('')
-    setModels([])
-    setSelectedYear('')
-    setYears([])
-    setVehicleInfo({} as VehicleInfo)
-  }, [])
+      const response = await api.get(`${type}/marcas`)
+
+      setBrands(
+        response.data.map((brand: Brand) => {
+          return {
+            value: brand.codigo,
+            label: brand.nome,
+          }
+        })
+      )
+
+      setSelectedBrand('')
+      setSelectedModel('')
+      setModels([])
+      setSelectedYear('')
+      setYears([])
+      setVehicleInfo({} as VehicleInfo)
+    },
+    [selectedType]
+  )
 
   const handleVehicleBrand = useCallback(
     async event => {
       const brand = event.value
+
+      if (brand === selectedBrand) {
+        return
+      }
 
       const response = await api.get(`${selectedType}/marcas/${brand}/modelos`)
 
@@ -100,12 +113,16 @@ const Home: React.FC = () => {
       setYears([])
       setVehicleInfo({} as VehicleInfo)
     },
-    [selectedType]
+    [selectedType, selectedBrand]
   )
 
   const handleVehicleModel = useCallback(
     async event => {
       const model = event.value
+
+      if (model === selectedModel) {
+        return
+      }
 
       const response = await api.get(
         `${selectedType}/marcas/${selectedBrand}/modelos/${model}/anos`
@@ -124,15 +141,22 @@ const Home: React.FC = () => {
       setSelectedYear('')
       setVehicleInfo({} as VehicleInfo)
     },
-    [selectedType, selectedBrand],
+    [selectedType, selectedBrand, selectedModel],
   )
 
-  const handleVehicleYear = useCallback(async event => {
-    const year = event.value
+  const handleVehicleYear = useCallback(
+    async event => {
+      const year = event.value
 
-    setSelectedYear(year)
-    setVehicleInfo({} as VehicleInfo)
-  }, [])
+      if (year === selectedYear) {
+        return
+      }
+
+      setSelectedYear(year)
+      setVehicleInfo({} as VehicleInfo)
+    },
+    [selectedYear]
+  )
 
   const handleSearchPrice = useCallback(
     async (event: FormEvent) => {
@@ -164,27 +188,36 @@ const Home: React.FC = () => {
           <div>
             <h3>LET&apos;S FIND YOUR VEHICLE PRICE</h3>
             <CarType>
-              <button type="button" onClick={() => handleVehicleType('carros')}>
+              <ButtonCarType
+                type="button"
+                selected={selectedType === 'carros'}
+                onClick={() => handleVehicleType('carros')}
+              >
                 <span>
                   <FaCarSide size={32} />
                 </span>
                 Cars
-              </button>
-              <button type="button" onClick={() => handleVehicleType('motos')}>
+              </ButtonCarType>
+              <ButtonCarType
+                type="button"
+                selected={selectedType === 'motos'}
+                onClick={() => handleVehicleType('motos')}
+              >
                 <span>
                   <FaMotorcycle size={32} />
                 </span>{' '}
                 Motorcycles
-              </button>
-              <button
+              </ButtonCarType>
+              <ButtonCarType
                 type="button"
+                selected={selectedType === 'caminhoes'}
                 onClick={() => handleVehicleType('caminhoes')}
               >
                 <span>
                   <FaTruck size={32} />
                 </span>
                 Trucks
-              </button>
+              </ButtonCarType>
             </CarType>
             <MySelect
               classNamePrefix={'Select'}

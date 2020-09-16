@@ -1,6 +1,10 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { shade } from 'polished'
 import Select from 'react-select'
+
+interface ButtonProps {
+  selected: boolean
+}
 
 export const Container = styled.div`
   header {
@@ -71,7 +75,7 @@ export const CarType = styled.div`
 
   margin: 30px 0;
 
-  button {
+  /* button {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -86,14 +90,48 @@ export const CarType = styled.div`
   }
 
   button:hover {
-    background: ${shade(0.2, '#db2e2e')};
+    background: ${shade(
+    0.2,
+    '#db2e2e',
+  )};
   }
 
   button:focus {
     background: #000000;
     color: #808080;
     font-weight: 700;
+  } */
+`
+
+export const ButtonCarType = styled.button<ButtonProps>`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  height: 80px;
+  width: 140px;
+  border: none;
+  border-radius: 8px;
+  background: #db2e2e;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background: ${shade(0.2, '#db2e2e')};
   }
+
+  ${props =>
+    props.selected &&
+    css`
+      background: #1c1c1c;
+      color: #808080;
+      font-weight: 700;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background: ${shade(0.2, '#1c1c1c')};
+      }
+    `}
 `
 
 export const MySelect = styled(Select)`
