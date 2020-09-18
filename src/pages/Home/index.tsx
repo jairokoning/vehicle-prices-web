@@ -227,7 +227,7 @@ const Home: React.FC = () => {
                 brands.find((obj: any) => obj.value === selectedBrand) || ''
               }
               options={brands}
-              onChange={(event: any) => handleVehicleBrand(event)}
+              onChange={(event: FormEvent) => handleVehicleBrand(event)}
             />
             <MySelect
               classNamePrefix={'Select'}
@@ -237,7 +237,7 @@ const Home: React.FC = () => {
                 models.find((obj: any) => obj.value === selectedModel) || ''
               }
               options={models}
-              onChange={(event: any) => handleVehicleModel(event)}
+              onChange={(event: FormEvent) => handleVehicleModel(event)}
             />
             <MySelect
               classNamePrefix={'Select'}
@@ -245,7 +245,7 @@ const Home: React.FC = () => {
               placeholder="Years..."
               options={years}
               value={years.find((obj: any) => obj.value === selectedYear) || ''}
-              onChange={(event: any) => handleVehicleYear(event)}
+              onChange={(event: FormEvent) => handleVehicleYear(event)}
             />
           </div>
           <button type="submit">Search</button>
