@@ -75,7 +75,7 @@ const Home: React.FC = () => {
             value: brand.codigo,
             label: brand.nome,
           }
-        })
+        }),
       )
 
       setSelectedBrand('')
@@ -85,7 +85,7 @@ const Home: React.FC = () => {
       setYears([])
       setVehicleInfo({} as VehicleInfo)
     },
-    [selectedType]
+    [selectedType],
   )
 
   const handleVehicleBrand = useCallback(
@@ -104,7 +104,7 @@ const Home: React.FC = () => {
             value: model.codigo,
             label: model.nome,
           }
-        })
+        }),
       )
 
       setSelectedBrand(brand)
@@ -113,7 +113,7 @@ const Home: React.FC = () => {
       setYears([])
       setVehicleInfo({} as VehicleInfo)
     },
-    [selectedType, selectedBrand]
+    [selectedType, selectedBrand],
   )
 
   const handleVehicleModel = useCallback(
@@ -125,7 +125,7 @@ const Home: React.FC = () => {
       }
 
       const response = await api.get(
-        `${selectedType}/marcas/${selectedBrand}/modelos/${model}/anos`
+        `${selectedType}/marcas/${selectedBrand}/modelos/${model}/anos`,
       )
 
       setYears(
@@ -134,14 +134,14 @@ const Home: React.FC = () => {
             value: year.codigo,
             label: year.nome,
           }
-        })
+        }),
       )
 
       setSelectedModel(model)
       setSelectedYear('')
       setVehicleInfo({} as VehicleInfo)
     },
-    [selectedType, selectedBrand, selectedModel],
+    [selectedType, selectedBrand, selectedModel]
   )
 
   const handleVehicleYear = useCallback(
@@ -155,7 +155,7 @@ const Home: React.FC = () => {
       setSelectedYear(year)
       setVehicleInfo({} as VehicleInfo)
     },
-    [selectedYear]
+    [selectedYear],
   )
 
   const handleSearchPrice = useCallback(
@@ -163,12 +163,12 @@ const Home: React.FC = () => {
       event.preventDefault()
 
       const response = await api.get(
-        `${selectedType}/marcas/${selectedBrand}/modelos/${selectedModel}/anos/${selectedYear}`,
+        `${selectedType}/marcas/${selectedBrand}/modelos/${selectedModel}/anos/${selectedYear}`
       )
 
       setVehicleInfo(response.data)
     },
-    [selectedType, selectedBrand, selectedModel, selectedYear]
+    [selectedType, selectedBrand, selectedModel, selectedYear],
   )
 
   return (
@@ -237,7 +237,7 @@ const Home: React.FC = () => {
                 models.find((obj: any) => obj.value === selectedModel) || ''
               }
               options={models}
-              onChange={(event: any) => handleVehicleModel(event)}
+              onChange={(event: FormEvent) => handleVehicleModel(event)}
             />
             <MySelect
               classNamePrefix={'Select'}
@@ -245,7 +245,7 @@ const Home: React.FC = () => {
               placeholder="Years..."
               options={years}
               value={years.find((obj: any) => obj.value === selectedYear) || ''}
-              onChange={(event: any) => handleVehicleYear(event)}
+              onChange={(event: FormEvent) => handleVehicleYear(event)}
             />
           </div>
           <button type="submit">Search</button>
