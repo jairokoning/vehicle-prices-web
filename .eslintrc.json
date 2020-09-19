@@ -1,7 +1,7 @@
 {
     "env": {
         "browser": true,
-        "es6": true
+        "es2020": true
     },
     "extends": [
         "plugin:react/recommended",
@@ -32,6 +32,8 @@
     ],
     "rules": {
       "prettier/prettier": "error",
+      "space-before-function-paren": "off",
+      "react/prop-types": "off",
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
       "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
@@ -48,11 +50,10 @@
       "@typescript-eslint/no-use-before-define": ["error", {"variables": false}],
       "comma-dangle": [
         "error",
-        { "arrays":
-          "always-multiline",
-          "objects": "always-multiline",
-          "imports": "always-multiline",
-          "exports": "always-multiline",
+        { "arrays": "never",
+          "objects": "never",
+          "imports": "never",
+          "exports": "never",
           "functions": "never"
         }
       ]
