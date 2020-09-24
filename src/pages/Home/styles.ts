@@ -9,23 +9,52 @@ interface ButtonProps {
 export const Container = styled.div`
   header {
     display: flex;
-    justify-content: center;
-
+    flex-direction: column;
     background: #000;
 
-    div {
+    div.title {
       display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      height: 100px;
+      margin-top: 10px;
+      font-family: 'Playfair Display', serif;
+      color: #424242;
+    }
 
-      div {
+    div.image {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  @media (min-width: 1100px) {
+    header {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: flex-start;
+
+      div.title {
+        flex: 1;
+        max-width: 40%;
+        height: 100px;
         display: flex;
         flex-direction: column;
-        padding-top: 30px;
+        justify-content: flex-end;
+        align-items: flex-end;
 
         font-family: 'Playfair Display', serif;
+      }
 
-        h1 {
-          font-size: 700;
-        }
+      div.image {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
       }
     }
   }

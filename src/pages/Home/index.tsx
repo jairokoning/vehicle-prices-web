@@ -4,7 +4,7 @@ import {
   FaMotorcycle,
   FaTruck,
   FaLinkedin,
-  FaGithub,
+  FaGithub
 } from 'react-icons/fa'
 
 import ImgCar from '../../assets/img-car.jpg'
@@ -19,7 +19,7 @@ import {
   VehicleInfoContent,
   PriceContent,
   ReferenceContent,
-  Footer,
+  Footer
 } from './styles'
 
 interface Brand {
@@ -73,9 +73,9 @@ const Home: React.FC = () => {
         response.data.map((brand: Brand) => {
           return {
             value: brand.codigo,
-            label: brand.nome,
+            label: brand.nome
           }
-        })
+        }),
       )
 
       setSelectedBrand('')
@@ -85,7 +85,7 @@ const Home: React.FC = () => {
       setYears([])
       setVehicleInfo({} as VehicleInfo)
     },
-    [selectedType]
+    [selectedType],
   )
 
   const handleVehicleBrand = useCallback(
@@ -102,9 +102,9 @@ const Home: React.FC = () => {
         response.data.modelos.map((model: Model) => {
           return {
             value: model.codigo,
-            label: model.nome,
+            label: model.nome
           }
-        })
+        }),
       )
 
       setSelectedBrand(brand)
@@ -113,7 +113,7 @@ const Home: React.FC = () => {
       setYears([])
       setVehicleInfo({} as VehicleInfo)
     },
-    [selectedType, selectedBrand]
+    [selectedType, selectedBrand],
   )
 
   const handleVehicleModel = useCallback(
@@ -125,23 +125,23 @@ const Home: React.FC = () => {
       }
 
       const response = await api.get(
-        `${selectedType}/marcas/${selectedBrand}/modelos/${model}/anos`
+        `${selectedType}/marcas/${selectedBrand}/modelos/${model}/anos`,
       )
 
       setYears(
         response.data.map((year: Year) => {
           return {
             value: year.codigo,
-            label: year.nome,
+            label: year.nome
           }
-        })
+        }),
       )
 
       setSelectedModel(model)
       setSelectedYear('')
       setVehicleInfo({} as VehicleInfo)
     },
-    [selectedType, selectedBrand, selectedModel],
+    [selectedType, selectedBrand, selectedModel]
   )
 
   const handleVehicleYear = useCallback(
@@ -155,7 +155,7 @@ const Home: React.FC = () => {
       setSelectedYear(year)
       setVehicleInfo({} as VehicleInfo)
     },
-    [selectedYear]
+    [selectedYear],
   )
 
   const handleSearchPrice = useCallback(
@@ -163,22 +163,22 @@ const Home: React.FC = () => {
       event.preventDefault()
 
       const response = await api.get(
-        `${selectedType}/marcas/${selectedBrand}/modelos/${selectedModel}/anos/${selectedYear}`,
+        `${selectedType}/marcas/${selectedBrand}/modelos/${selectedModel}/anos/${selectedYear}`
       )
 
       setVehicleInfo(response.data)
     },
-    [selectedType, selectedBrand, selectedModel, selectedYear]
+    [selectedType, selectedBrand, selectedModel, selectedYear],
   )
 
   return (
     <Container>
       <header>
-        <div>
-          <div>
-            <h3>How much?</h3>
-            <h1>Vehicle Prices</h1>
-          </div>
+        <div className="title">
+          <h3>How much?</h3>
+          <h1>Vehicle Prices</h1>
+        </div>
+        <div className="image">
           <img src={ImgCar} alt="Vehicle" />
         </div>
       </header>
