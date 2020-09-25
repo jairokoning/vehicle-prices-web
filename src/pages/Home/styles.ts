@@ -71,8 +71,7 @@ export const Content = styled.div`
   form {
     background: #fff;
     margin: 80px 0;
-
-    width: 540px;
+    width: 440px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -95,14 +94,22 @@ export const Content = styled.div`
       background: ${shade(0.2, '#d92b38')};
     }
   }
+
+  @media (min-width: 1100px) {
+    form {
+      width: 540px;
+    }
+  }
 `
 
 export const CarType = styled.div`
   display: flex;
+  flex-direction: column;
+
   align-items: center;
   justify-content: space-between;
 
-  margin: 30px 0;
+  margin: 0 0 30px 0;
 
   /* button {
     display: flex;
@@ -130,16 +137,26 @@ export const CarType = styled.div`
     color: #808080;
     font-weight: 700;
   } */
+
+  @media (min-width: 1100px) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    margin: 0 0 30px 0;
+  }
 `
 
 export const ButtonCarType = styled.button<ButtonProps>`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
 
-  height: 80px;
-  width: 140px;
+  margin-top: 30px;
+  height: 48px;
+  width: 100%;
   border: none;
   border-radius: 8px;
   background: #db2e2e;
@@ -161,6 +178,20 @@ export const ButtonCarType = styled.button<ButtonProps>`
         background: ${shade(0.2, '#1c1c1c')};
       }
     `}
+
+  svg {
+    margin-right: 5px;
+  }
+
+  @media (min-width: 1100px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    height: 80px;
+    width: 140px;
+  }
 `
 
 export const MySelect = styled(Select)`
