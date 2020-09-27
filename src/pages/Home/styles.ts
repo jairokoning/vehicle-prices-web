@@ -214,11 +214,11 @@ export const MySelect = styled(Select)`
 
 export const VehicleInfoContent = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
 
-  width: 100%;
-  padding: 30px 0 80px 0;
+  width: 440px;
 
   background: linear-gradient(
     180deg,
@@ -229,14 +229,21 @@ export const VehicleInfoContent = styled.div`
 
   @media (min-width: 1100px) {
     display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    width: 100%;
+    padding: 30px 0 80px 0;
   }
 `
 export const PriceContent = styled.div`
+  margin-top: 15px;
   border-left: 2px solid #5c5c5b;
   padding-left: 5px;
 `
 
 export const ReferenceContent = styled.div`
+  margin-top: 15px;
   border-left: 2px solid #5c5c5b;
   padding-left: 5px;
 `
