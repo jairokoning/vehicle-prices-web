@@ -128,7 +128,7 @@ export const CarType = styled.div`
   button:hover {
     background: ${shade(
     0.2,
-    '#db2e2e',
+    '#db2e2e'
   )};
   }
 
@@ -226,6 +226,10 @@ export const VehicleInfoContent = styled.div`
     rgba(208, 208, 208, 1) 80%,
     rgba(187, 187, 187, 1) 100%
   );
+
+  @media (min-width: 1100px) {
+    display: flex;
+  }
 `
 export const PriceContent = styled.div`
   border-left: 2px solid #5c5c5b;
