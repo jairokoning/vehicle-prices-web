@@ -4,7 +4,7 @@ import {
   FaMotorcycle,
   FaTruck,
   FaLinkedin,
-  FaGithub
+  FaGithub,
 } from 'react-icons/fa'
 
 import ImgCar from '../../assets/img-car.jpg'
@@ -19,6 +19,7 @@ import {
   VehicleInfoContent,
   PriceContent,
   ReferenceContent,
+  ApiInfoText,
   Footer
 } from './styles'
 
@@ -73,9 +74,9 @@ const Home: React.FC = () => {
         response.data.map((brand: Brand) => {
           return {
             value: brand.codigo,
-            label: brand.nome
+            label: brand.nome,
           }
-        }),
+        })
       )
 
       setSelectedBrand('')
@@ -85,7 +86,7 @@ const Home: React.FC = () => {
       setYears([])
       setVehicleInfo({} as VehicleInfo)
     },
-    [selectedType],
+    [selectedType]
   )
 
   const handleVehicleBrand = useCallback(
@@ -102,9 +103,9 @@ const Home: React.FC = () => {
         response.data.modelos.map((model: Model) => {
           return {
             value: model.codigo,
-            label: model.nome
+            label: model.nome,
           }
-        }),
+        })
       )
 
       setSelectedBrand(brand)
@@ -113,7 +114,7 @@ const Home: React.FC = () => {
       setYears([])
       setVehicleInfo({} as VehicleInfo)
     },
-    [selectedType, selectedBrand],
+    [selectedType, selectedBrand]
   )
 
   const handleVehicleModel = useCallback(
@@ -125,23 +126,23 @@ const Home: React.FC = () => {
       }
 
       const response = await api.get(
-        `${selectedType}/marcas/${selectedBrand}/modelos/${model}/anos`,
+        `${selectedType}/marcas/${selectedBrand}/modelos/${model}/anos`
       )
 
       setYears(
         response.data.map((year: Year) => {
           return {
             value: year.codigo,
-            label: year.nome
+            label: year.nome,
           }
-        }),
+        })
       )
 
       setSelectedModel(model)
       setSelectedYear('')
       setVehicleInfo({} as VehicleInfo)
     },
-    [selectedType, selectedBrand, selectedModel]
+    [selectedType, selectedBrand, selectedModel],
   )
 
   const handleVehicleYear = useCallback(
@@ -155,7 +156,7 @@ const Home: React.FC = () => {
       setSelectedYear(year)
       setVehicleInfo({} as VehicleInfo)
     },
-    [selectedYear],
+    [selectedYear]
   )
 
   const handleSearchPrice = useCallback(
@@ -163,12 +164,12 @@ const Home: React.FC = () => {
       event.preventDefault()
 
       const response = await api.get(
-        `${selectedType}/marcas/${selectedBrand}/modelos/${selectedModel}/anos/${selectedYear}`
+        `${selectedType}/marcas/${selectedBrand}/modelos/${selectedModel}/anos/${selectedYear}`,
       )
 
       setVehicleInfo(response.data)
     },
-    [selectedType, selectedBrand, selectedModel, selectedYear],
+    [selectedType, selectedBrand, selectedModel, selectedYear]
   )
 
   return (
@@ -266,13 +267,33 @@ const Home: React.FC = () => {
             </h2>
           </ReferenceContent>
         </VehicleInfoContent>
+        <ApiInfoText>
+          All vehicle data are provided by the API &nbsp;
+          <a
+            href="https://deividfortuna.github.io/fipe/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            FIPE API HTTP REST
+          </a>
+        </ApiInfoText>
+
         <Footer>
-          <a href="https://www.linkedin.com/in/jairokoning/">
+          <p>Developed by Jairo Koning</p>
+          <a
+            href="https://www.linkedin.com/in/jairokoning/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaLinkedin />
             Linkedin
           </a>
 
-          <a href="https://github.com/jairokoning">
+          <a
+            href="https://github.com/jairokoning"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaGithub /> Github
           </a>
         </Footer>

@@ -70,7 +70,7 @@ export const Content = styled.div`
 
   form {
     background: #fff;
-    margin: 80px 0;
+    margin: 80px 0 20px 0;
     width: 440px;
     text-align: center;
     display: flex;
@@ -220,32 +220,41 @@ export const VehicleInfoContent = styled.div`
 
   width: 440px;
 
-  background: linear-gradient(
+  /* background: linear-gradient(
     180deg,
     rgba(245, 245, 245, 1) 0%,
     rgba(208, 208, 208, 1) 80%,
     rgba(187, 187, 187, 1) 100%
-  );
+  ); */
 
   @media (min-width: 1100px) {
     display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
 
-    width: 100%;
-    padding: 30px 0 80px 0;
+    width: 540px;
+    padding: 20px 0;
   }
 `
 export const PriceContent = styled.div`
-  margin-top: 15px;
+  margin-bottom: 20px;
   border-left: 2px solid #5c5c5b;
   padding-left: 5px;
 `
 
 export const ReferenceContent = styled.div`
-  margin-top: 15px;
+  margin-bottom: 20px;
   border-left: 2px solid #5c5c5b;
   padding-left: 5px;
+`
+
+export const ApiInfoText = styled.p`
+  a {
+    text-decoration: none;
+    font-weight: 700;
+    color: #303030;
+  }
 `
 
 export const Footer = styled.footer`
