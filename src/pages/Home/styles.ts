@@ -76,7 +76,7 @@ export const Content = styled.div`
   form {
     background: #fff;
     margin: 80px 0 20px 0;
-    width: 440px;
+    width: 340px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -97,6 +97,12 @@ export const Content = styled.div`
 
     > button:hover {
       background: ${shade(0.2, '#d92b38')};
+    }
+  }
+
+  @media (min-width: 700px) {
+    form {
+      width: 440px;
     }
   }
 
@@ -223,7 +229,7 @@ export const VehicleInfoContent = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
 
-  width: 440px;
+  width: 340px;
 
   /* background: linear-gradient(
     180deg,
@@ -232,14 +238,18 @@ export const VehicleInfoContent = styled.div`
     rgba(187, 187, 187, 1) 100%
   ); */
 
-  @media (min-width: 1100px) {
+  @media (min-width: 700px) {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 
-    width: 540px;
+    width: 440px;
     padding: 20px 0;
+  }
+
+  @media (min-width: 1100px) {
+    width: 540px;
   }
 `
 export const PriceContent = styled.div`
@@ -254,7 +264,12 @@ export const ReferenceContent = styled.div`
   padding-left: 5px;
 `
 
-export const ApiInfoText = styled.p`
+export const ApiInfoText = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 20px 20px 20px;
+  font-size: 14px;
   a {
     text-decoration: none;
     font-weight: 700;
