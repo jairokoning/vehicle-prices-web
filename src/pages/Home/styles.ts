@@ -28,6 +28,11 @@ export const Container = styled.div`
       flex-direction: column;
       justify-content: center;
       align-items: center;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
     }
   }
 
@@ -128,7 +133,7 @@ export const CarType = styled.div`
   button:hover {
     background: ${shade(
     0.2,
-    '#db2e2e'
+    '#db2e2e',
   )};
   }
 
