@@ -9,23 +9,57 @@ interface ButtonProps {
 export const Container = styled.div`
   header {
     display: flex;
-    justify-content: center;
-
+    flex-direction: column;
     background: #000;
 
-    div {
+    div.title {
       display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      height: 100px;
+      margin-top: 10px;
+      font-family: 'Playfair Display', serif;
+      color: #424242;
+    }
 
-      div {
+    div.image {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  @media (min-width: 1100px) {
+    header {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: flex-start;
+
+      div.title {
+        flex: 1;
+        max-width: 40%;
+        height: 100px;
         display: flex;
         flex-direction: column;
-        padding-top: 30px;
+        justify-content: flex-end;
+        align-items: flex-end;
 
         font-family: 'Playfair Display', serif;
+      }
 
-        h1 {
-          font-size: 700;
-        }
+      div.image {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
       }
     }
   }
@@ -41,9 +75,8 @@ export const Content = styled.div`
 
   form {
     background: #fff;
-    margin: 80px 0;
-
-    width: 540px;
+    margin: 80px 0 20px 0;
+    width: 340px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -66,14 +99,28 @@ export const Content = styled.div`
       background: ${shade(0.2, '#d92b38')};
     }
   }
+
+  @media (min-width: 700px) {
+    form {
+      width: 440px;
+    }
+  }
+
+  @media (min-width: 1100px) {
+    form {
+      width: 540px;
+    }
+  }
 `
 
 export const CarType = styled.div`
   display: flex;
+  flex-direction: column;
+
   align-items: center;
   justify-content: space-between;
 
-  margin: 30px 0;
+  margin: 0 0 30px 0;
 
   /* button {
     display: flex;
@@ -101,16 +148,26 @@ export const CarType = styled.div`
     color: #808080;
     font-weight: 700;
   } */
+
+  @media (min-width: 1100px) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    margin: 0 0 30px 0;
+  }
 `
 
 export const ButtonCarType = styled.button<ButtonProps>`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
 
-  height: 80px;
-  width: 140px;
+  margin-top: 30px;
+  height: 48px;
+  width: 100%;
   border: none;
   border-radius: 8px;
   background: #db2e2e;
@@ -132,6 +189,20 @@ export const ButtonCarType = styled.button<ButtonProps>`
         background: ${shade(0.2, '#1c1c1c')};
       }
     `}
+
+  svg {
+    margin-right: 5px;
+  }
+
+  @media (min-width: 1100px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    height: 80px;
+    width: 140px;
+  }
 `
 
 export const MySelect = styled(Select)`
@@ -154,27 +225,56 @@ export const MySelect = styled(Select)`
 
 export const VehicleInfoContent = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
 
-  width: 100%;
-  padding: 30px 0 80px 0;
+  width: 340px;
 
-  background: linear-gradient(
+  /* background: linear-gradient(
     180deg,
     rgba(245, 245, 245, 1) 0%,
     rgba(208, 208, 208, 1) 80%,
     rgba(187, 187, 187, 1) 100%
-  );
+  ); */
+
+  @media (min-width: 700px) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 440px;
+    padding: 20px 0;
+  }
+
+  @media (min-width: 1100px) {
+    width: 540px;
+  }
 `
 export const PriceContent = styled.div`
+  margin-bottom: 20px;
   border-left: 2px solid #5c5c5b;
   padding-left: 5px;
 `
 
 export const ReferenceContent = styled.div`
+  margin-bottom: 20px;
   border-left: 2px solid #5c5c5b;
   padding-left: 5px;
+`
+
+export const ApiInfoText = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 20px 20px 20px;
+  font-size: 14px;
+  a {
+    text-decoration: none;
+    font-weight: 700;
+    color: #303030;
+  }
 `
 
 export const Footer = styled.footer`
