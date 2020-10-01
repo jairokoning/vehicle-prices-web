@@ -4,7 +4,7 @@
 	<br>
 </h1>
 
-<img src="https://raw.githubusercontent.com/jairokoning/vehicle-prices-web/development/src/assets/vehicle-prices.gif>
+<img src="https://raw.githubusercontent.com/jairokoning/vehicle-prices-web/development/src/assets/vehicle-prices.gif">
 
 :arrow_right:  **Vehicle Prices** is a front-end application that allows you to consult prices of different vehicles marketed in Brazil. All data/info of any vehicle are provided by a third party API - [FIPE API HTTP REST](https://deividfortuna.github.io/fipe/).
 
