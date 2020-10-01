@@ -4,7 +4,7 @@
 	<br>
 </h1>
 
-<img src="https://raw.githubusercontent.com/jairokoning/github-explorer-react-ts/master/src/assets/app_print.jpg" alt="Github Explorer">
+<img src="https://raw.githubusercontent.com/jairokoning/vehicle-prices-web/development/src/assets/vehicle-prices.gif>
 
 :arrow_right:  **Vehicle Prices** is a front-end application that allows you to consult prices of different vehicles marketed in Brazil. All data/info of any vehicle are provided by a third party API - [FIPE API HTTP REST](https://deividfortuna.github.io/fipe/).
 
@@ -29,13 +29,7 @@ You can simple access [Vehicle Prices](https://vehicleprices.tk) and follow thes
 	-  `git clone https://github.com/jairokoning/vehicle-prices-web`
 - Move yourself to the appropriate app directory and in the terminal execute:
 	-  `yarn` to install dependencies
-	- `yarn start` to start the app
-
-## :triangular_flag_on_post: Getting started
-
-1. Clone this repo using `git clone https://github.com/jairokoning/github-explorer-react-ts.git`
-2. Move yourself to the appropriate app directory and run `yarn` to install all dependencies
-3. Execute `yarn start` to start the application
+	- `yarn start` to start the application
 
 ## :key: License
 
