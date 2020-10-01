@@ -18,11 +18,17 @@ You can simple access [Vehicle Prices](https://vehicleprices.tk) and follow thes
 
 ## :computer: Technologies and Concepts used
 :heavy_check_mark: React JS
+
 :heavy_check_mark:  TypeScript
+
 :heavy_check_mark: Axios
+
 :heavy_check_mark: Styled Components
+
 :heavy_check_mark:  ESLint
+
 :heavy_check_mark:  Prettier
+
 
 ## :triangular_flag_on_post: Installation / Getting started
 - Clone this repository:
